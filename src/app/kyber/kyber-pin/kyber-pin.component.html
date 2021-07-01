@@ -1,0 +1,26 @@
+<h3>PIN Reminder Token negotiated</h3>
+<div *ngIf="greeting$ | async as greeting">
+    <p>{{greeting}}</p>
+    <p>Nombre: {{commonModel.userToken.givenName}}</p>
+    <p>Apellido: {{commonModel.userToken.familyName}}</p>
+    <p>Id: {{commonModel.userToken.id}}</p>
+</div>
+<h3>Key Pair generated</h3>
+<div *ngIf="publicKeyArmored$ | async as publicKey">
+    <p>-----BEGIN PUBLIC KEY-----</p>
+    <p>{{publicKeyArmored}}</p>
+    <p>-----END PUBLIC KEY-----</p>
+</div>
+<h3>PUB Key sended</h3>
+<div *ngIf="pubSendedResponse$ | async as pubSendedResponse">
+    <p>{{pubSendedResponse}}</p>
+</div>
+<h3>ZPKa Request (PIN Reminder)</h3>
+<div *ngIf="zpka$ | async as zpka">
+    <p>Nonce: {{zpka.nonce}}</p>
+    <p>Encrypted ZPKa: {{zpka.encryptedZpka}}</p>
+    <p>Decrypted ZPKa: {{zpka.clearZpka}}</p>
+</div>
+<div *ngIf="pin$ | async as pin">
+    <h2>PIN: {{pin}}</h2>
+</div>

@@ -1,0 +1,69 @@
+import { Injectable } from '@angular/core';
+import { KeyOptions, key } from 'openpgp';
+import * as openpgpMod from 'openpgp';
+
+import { KeyPair } from '../model/keyPair';
+
+@Injectable({
+    providedIn: 'root'
+})
+export class CryptoService {
+
+    constructor() { }
+
+    generateKayPair(): Promise<{ key: key.Key; privateKeyArmored: string; publicKeyArmored: string; revocationCertificate: string }> {
+        // generateKayPair(): Promise< KeyPair > {
+        const keyOptions = {
+            numBits: 2048,
+            passpharse: 'femema',
+            userIds: [{
+                name: 'felix',
+                email: 'felix.merino@keyland.es'
+            }]
+        };
+        return openpgpMod.generateKey(keyOptions);
+        // const aux: object = openpgpMod.generateKey(keyOptions);
+
+        // let keyPair: KeyPair;
+        // keyPair = {
+        //     key: aux['key'],
+        //     privateKeyArmored: aux['privateKeyArmored'],
+        //     publicKeyArmored: aux['publicKeyArmored'],
+        //     revocationCertificate: aux['revocationCertificate']
+        // };
+    }
+
+    decryptZPKa(privateKeyArmored: string, encryptedZpka: string) {
+        debugger;
+        window.crypto.subtle.generateKey({
+            name: 'RSA-OAEP',
+            modulusLength: 2048,
+            publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
+            hash: {name: "SHA-256"}
+        },
+        true,
+        ['encrypt', 'decrypt'])
+        .then( keyPair => {
+            debugger;
+            console.log(keyPair);
+        })
+    }
+
+    // decryptZPKa(privateKeyArmored: string, encryptedZpka: string) {
+    //     debugger;
+    //     openpgpMod.key.readArmored(privateKeyArmored)
+    //     .then( privateKey => {
+    //         var key = privateKey.keys[0];
+    //         console.log(privateKey);
+    //         console.log(key);
+    //         const mensaje = openpgpMod.message.fromText(encryptedZpka);
+    //         var options: openpgpMod.DecryptOptions = {
+    //             message: mensaje,
+    //             privateKey: key
+    //         }
+    //         openpgpMod.decrypt(options).then((decryptedMessage) => {
+    //         console.log(decryptedMessage.data)
+    //         })
+    //     });
+    // }
+}

@@ -1,0 +1,35 @@
+            <div [ngClass]="'login-container'">
+                <div [ngClass]="'login-content'">
+                    <h1 [ngClass]="'login-title'">Login to Kyber</h1>
+                    <div [ngClass]="'social-login'">
+                        <a [ngClass]="['btn', 'btn-block', 'social-btn', 'google']" href={GOOGLE_AUTH_URL}>
+                            <img src="assets/img/google-logo.png" alt="Google" /> Log in with Google</a>
+                        <a [ngClass]="['btn', 'btn-block', 'social-btn', 'wso2is']" href="{{wso2isAuthUrl}}">
+                            <img src="assets/img/wso2-logo.svg" alt="WSO2IS" /> Log in with WSO2IS</a>
+                        <a [ngClass]="['btn', 'btn-block', 'social-btn', 'facebook']" href={FACEBOOK_AUTH_URL}>
+                            <img src="assets/img/fb-logo.png" alt="Facebook" /> Log in with Facebook</a>
+                        <a [ngClass]="['btn', 'btn-block', 'social-btn', 'github']" href={GITHUB_AUTH_URL}>
+                            <img src="assets/img/github-logo.png" alt="Github" /> Log in with Github</a>
+                    </div>
+                    <div [ngClass]="'or-separator'">
+                        <span [ngClass]="'or-text'">OR</span>
+                    </div>
+                    <form >
+                        <div [ngClass]="'form-item'">
+                            <input type="email" name="email" 
+                                [ngClass]="'form-control'" placeholder="Email"
+                                value={this.state.email} onChange={this.handleInputChange} required/>
+                        </div>
+                        <div [ngClass]="'form-item'">
+                            <input type="password" name="password" 
+                                [ngClass]="'form-control'" placeholder="Password"
+                                value={this.state.password} onChange={this.handleInputChange} required/>
+                        </div>
+                        <div [ngClass]="'form-item'">
+                            <button type="submit" [ngClass]="['btn', 'btn-block', 'social-btn', 'btn-primary']">Login</button>
+                        </div>
+                    </form>                    
+                    <span [ngClass]="'signup-link'">New user? <a routerLink="/signup">Sign up!</a></span>
+                </div>
+            </div>
+

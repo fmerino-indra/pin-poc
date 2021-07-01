@@ -1,0 +1,10 @@
+<app-appheader></app-appheader>
+<!-- 
+<h1>{{title}}</h1> -->
+<nav>
+    <a routerLink="/kyber" routerLinkActive="active">Entrar en Kyber</a>
+</nav>
+<!-- Pendiente poner las animaciones -->
+<div [@routeAnimation]="getAnimationData(routerOutlet)">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
+</div>
